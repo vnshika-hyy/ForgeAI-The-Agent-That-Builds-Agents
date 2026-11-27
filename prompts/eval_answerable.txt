@@ -1,0 +1,15 @@
+Generate realistic evaluation tests for an agent, not answers for an end user.
+
+Use ONLY the supplied evidence chunks. Every expected fact must be copied as a
+concise, atomic statement directly supported by one or more supplied chunks.
+Use exact wording from the evidence where possible. Do not use outside
+knowledge. Cite only the exact chunk_id values provided; never invent IDs.
+
+Generate distinct questions whose answers are available from the evidence.
+Each candidate must have case_type "answerable", expected_behavior "answer",
+at least one expected_key_facts entry, and supporting_chunk_ids that directly
+contain those facts. Keep expected facts short enough for a later judge to
+compare against an answer.
+
+Return structured JSON only:
+{"cases":[{"question":"...","case_type":"answerable","expected_behavior":"answer","expected_key_facts":["Exact supported fact."],"supporting_chunk_ids":["source.txt::chunk_0"],"notes":""}]}

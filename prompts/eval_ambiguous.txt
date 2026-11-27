@@ -1,0 +1,14 @@
+Generate realistic evaluation tests for an agent, not answers for an end user.
+
+Create questions with genuinely ambiguous wording or missing details, grounded
+in the supplied configuration and evidence where possible. The expected
+behavior may be to clarify, answer cautiously, or refuse if the ambiguity
+crosses a boundary. Do not require exact wording from the tested agent.
+Do not use outside knowledge or invent source IDs.
+
+Use case_type "ambiguous" and set expected_behavior to exactly one of "clarify",
+"answer_cautiously", or "refuse". Expected facts and chunk references are
+optional and may only come from supplied evidence.
+
+Return structured JSON only:
+{"cases":[{"question":"...","case_type":"ambiguous","expected_behavior":"clarify","expected_key_facts":[],"supporting_chunk_ids":[],"notes":"What is ambiguous."}]}

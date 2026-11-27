@@ -9,6 +9,8 @@ class Chunk(BaseModel):
     document_type: str
     chunk_index: int
     metadata: dict[str, str]
+    chunk_id: str = ""
+    page: int | None = None
 
 
 def chunk_document(
@@ -33,9 +35,12 @@ def chunk_document(
                 source=document.source,
                 document_type=document.document_type,
                 chunk_index=index,
+                chunk_id=f"{document.source}::chunk_{index}",
+                page=int(document.metadata["page"]) if "page" in document.metadata else None,
                 metadata={
                     **document.metadata,
                     "source": document.source,
+                    "chunk_id": f"{document.source}::chunk_{index}",
                 },
             )
         )

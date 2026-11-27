@@ -1,0 +1,17 @@
+Classify one failed evaluation case using the deterministic signals and case
+evidence provided. Use exactly one category:
+
+- wrong_refusal: an answer was expected but the agent refused.
+- retrieval_miss: required expected evidence was not retrieved and facts were
+  consequently missed.
+- hallucination: the response asserted unsupported information or used invalid
+  or fabricated grounding.
+- prompt_defect: necessary evidence was retrieved, but agent instructions or
+  behavior caused a failure.
+
+Prefer the deterministic signals. If signals conflict, select the best
+supported category and explain the evidence. Do not invent signals or add
+categories. Return the actual case_id supplied.
+
+Return structured JSON only:
+{"case_id":"eval_001","category":"prompt_defect","reason":"...","supporting_signals":["..."]}

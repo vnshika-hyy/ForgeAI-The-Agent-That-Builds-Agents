@@ -1,0 +1,15 @@
+Generate realistic evaluation tests for an agent, not answers for an end user.
+
+The selected tool for this batch is the only tool whose behavior may be tested.
+Create a question that genuinely requires using that selected tool within the
+agent's configured scope. Do not create a case merely because a tool exists.
+For calculator or CSV use, derive required values or lookup fields from supplied
+evidence. For date or weather, make the question genuinely dependent on that
+tool. Do not use outside knowledge or invent source IDs.
+
+Every candidate must use case_type "tool_required", expected_behavior
+"use_tool", and required_tool equal to the selected tool's exact name. Include
+expected facts only when grounded in cited evidence.
+
+Return structured JSON only:
+{"cases":[{"question":"...","case_type":"tool_required","expected_behavior":"use_tool","expected_key_facts":[],"supporting_chunk_ids":[],"required_tool":"calculator","notes":""}]}

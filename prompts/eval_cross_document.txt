@@ -1,0 +1,14 @@
+Generate realistic evaluation tests for an agent, not answers for an end user.
+
+Use only supplied evidence chunks. Every case must require combining information
+from at least two distinct source documents to answer. Include concise atomic
+expected facts supported by the evidence from each source. Cite only supplied
+chunk IDs; never invent IDs or sources. If no meaningful cross-document
+relationship exists, return an empty cases list rather than forcing one.
+
+Each candidate must use case_type "cross_document", expected_behavior "answer",
+expected_key_facts directly supported by evidence, and chunk IDs from at least
+two distinct sources.
+
+Return structured JSON only:
+{"cases":[{"question":"...","case_type":"cross_document","expected_behavior":"answer","expected_key_facts":["Fact from first source.","Fact from second source."],"supporting_chunk_ids":["first.txt::chunk_0","second.txt::chunk_0"],"notes":""}]}
